@@ -65,7 +65,7 @@ jobs:
           ##### Fortify on Demand configuration
           ##### Remove this section if you're integrating with Fortify Hosted/Software Security Center (see below)
           ### Required configuration
-          FOD_URL: https://ams.fortify.com                 # Must be hardcoded or configured through GitHub variable, not secret
+          FOD_URL: https://emea.fortify.com                 # Must be hardcoded or configured through GitHub variable, not secret
           FOD_TENANT: ${{secrets.FOD_TENANT}}              # Either tenant/user/password or client id/secret are required;
           FOD_USER: ${{secrets.FOD_USER}}                  # these should be configured through GitHub secrets.
           FOD_PASSWORD: ${{secrets.FOD_PAT}}
@@ -103,7 +103,7 @@ jobs:
           SSC_TOKEN: ${{secrets.SSC_TOKEN}}                # SSC CIToken; credentials should be configured through GitHub secrets
           SC_SAST_TOKEN: ${{secrets.SC_CLIENT_AUTH_TOKEN}} # ScanCentral SAST client_auth_token, required if SAST scan is enabled
           DEBRICKED_TOKEN: ${{secrets.DEBRICKED_TOKEN}}    # Debricked token, required if Debricked scan is enabled
-          SC_SAST_SENSOR_VERSION: 24.4.0                   # Sensor version to use for the scan, required if SAST scan is enabled
+          SC_SAST_SENSOR_VERSION: 25.2.0                   # Sensor version to use for the scan, required if SAST scan is enabled
           ### Optional configuration
           # SSC_LOGIN_EXTRA_OPTS: --socket-timeout=60s     # Extra 'fcli ssc session login' options
           # SC_SAST_LOGIN_EXTRA_OPTS: --socket-timeout=60s # Extra 'fcli sc-sast session login' options
@@ -111,7 +111,7 @@ jobs:
           # DO_SETUP: true                                 # Set up SSC application & version
           # SETUP_ACTION: <URL or file>                    # Customize setup action
           # SETUP_EXTRA_OPTS: --on-unsigned=ignore         # Pass extra options to setup action
-          # PACKAGE_EXTRA_OPTS: -bt mvn                    # Extra 'scancentral package' options
+          PACKAGE_EXTRA_OPTS: -bt mvn                    # Extra 'scancentral package' options
           # EXTRA_SC_SAST_SCAN_OPTS:                       # Extra 'fcli sc-sast scan start' options
           # DO_WAIT: true                                  # Wait for successful scan completion (implied if post-scan actions enabled)
           # DO_POLICY_CHECK: true                          # Fail pipeline if security policy outcome is FAIL
@@ -123,7 +123,7 @@ jobs:
           # DO_PR_COMMENT: true                            # Generate PR comments, only used on pull_request triggers
           # PR_COMMENT_ACTION: <URL or file>               # Customize PR comments
           # PR_COMMENT_EXTRA_OPTS: --on-unsigned=ignore    # Pass extra options to PR comment action
-          # DO_EXPORT: true                                # Export vulnerability data to GitHub code scanning dashboard
+          DO_EXPORT: true                                # Export vulnerability data to GitHub code scanning dashboard
           # EXPORT_ACTION: <URL or file>                   # Customize export action
           # EXPORT_EXTRA_OPTS: --on-unsigned=ignore        # Pass extra options to export action
           # TOOL_DEFINITIONS: <URL>                        # URL from where to retrieve Fortify tool definitions
