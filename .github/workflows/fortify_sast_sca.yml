@@ -58,7 +58,7 @@ jobs:
         uses: fortify/github-action@ef5539bf4bd9c45c0bd971978f635a69eae55297
         with:
           sast-scan: true          # Run a SAST scan; if not specified or set to false, no SAST scan will be run
-          debricked-sca-scan: true # For FoD, run an open-source scan as part of the SAST scan (ignored if SAST scan
+          debricked-sca-scan: false # For FoD, run an open-source scan as part of the SAST scan (ignored if SAST scan
                                    # is disabled). For SSC, run a Debricked scan and import results into SSC.
         env:
           #############################################################
@@ -107,7 +107,7 @@ jobs:
           ### Optional configuration
           # SSC_LOGIN_EXTRA_OPTS: --socket-timeout=60s     # Extra 'fcli ssc session login' options
           # SC_SAST_LOGIN_EXTRA_OPTS: --socket-timeout=60s # Extra 'fcli sc-sast session login' options
-          # SSC_APPVERSION: MyApp:MyVersion                # SSC application version name, default: <org>/<repo>:<branch>
+          SSC_APPVERSION: SDC-IWA-Java:Github              # SSC application version name, default: <org>/<repo>:<branch>
           # DO_SETUP: true                                 # Set up SSC application & version
           # SETUP_ACTION: <URL or file>                    # Customize setup action
           # SETUP_EXTRA_OPTS: --on-unsigned=ignore         # Pass extra options to setup action
