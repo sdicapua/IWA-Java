@@ -53,6 +53,7 @@ steps:
         ###############################################################
         #                 INTEGRATE FORTIFY SAST                      #
         #                                                             #
+        ##pull request
         # For FORTIFY ON DEMAND uncomment the next line               #
         # bash devops-integrations/oci/fortify-sast-fod.bash
         #                                                             #
