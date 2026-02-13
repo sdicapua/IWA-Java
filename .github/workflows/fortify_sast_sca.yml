@@ -73,7 +73,7 @@ jobs:
           FOD_CLIENT_SECRET: ${{secrets.FOD_CLIENT_SECRET}}
           ### Optional configuration
           # FOD_LOGIN_EXTRA_OPTS: --socket-timeout=60s     # Extra 'fcli fod session login' options
-          FOD_RELEASE_ID: ${{secrets.FOD_RELEASE_ID}}      # Fod RELEASE id
+          FOD_RELEASE: ${{secrets.FOD_RELEASE_ID}}         # Fod RELEASE id
           # FOD_RELEASE: Iwa-Java-SDC:github               # FoD release name, default: <org>/<repo>:<branch>
           # DO_SETUP: true                                 # Setup FoD application, release & static scan configuration
           # SETUP_ACTION: <URL or file>                    # Customize setup action
