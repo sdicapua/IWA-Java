@@ -384,7 +384,7 @@
                     <!-- Copy minimal set of files to FOD upload directory -->
                     <plugin>
                         <artifactId>maven-resources-plugin</artifactId>
-                        <version>3.1.0</version>
+                        <version>3.5.0</version>
                         <executions>
                             <execution>
                                 <id>copy-fortify-resources</id>
