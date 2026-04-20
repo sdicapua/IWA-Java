@@ -1,0 +1,38 @@
+name: Fortify SSC Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  fortify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      pull-requests: write
+
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      # Step to ensure dependencies are downloaded and the project compiles
+      - name: Build with Maven
+        run: mvn -B clean package -DskipTests
+
+      - name: Run Fortify Scan
+        uses: fortify/github-action@v3
+        env:
+          SSC_URL: ${{ vars.SSC_URL }}
+          SSC_TOKEN: ${{ secrets.SSC_TOKEN }}
+          SC_SAST_TOKEN: ${{ secrets.SC_SAST_TOKEN }}
+          SSC_APPVERSION: SDC-IWA-JAVA:github
