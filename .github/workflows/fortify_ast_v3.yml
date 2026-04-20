@@ -1,0 +1,27 @@
+name: Fortify SSC Scan
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  fortify:
+    runs-on: ubuntu-latest
+    permissions:               # When overriding default permissions, following are required:
+        contents: read           # Required for checkout action
+        security-events: write   # Required for publishing security reports to GitHub Security tab
+        pull-requests: write     # Required if DO_PR_COMMENT is set to true
+    steps:
+      - uses: actions/checkout@v4            # Check out source code
+      - uses: actions/setup-java@v4  # Set up build tool(s) required to build your project
+            with:
+            java-version: '17'
+            distribution: 'temurin'
+            cache: 'maven'
+      - uses: fortify/github-action@v3       # Run Fortify scans
+        env:
+          SSC_URL: ${{ vars.SSC_URL }}
+          SSC_TOKEN: ${{ secrets.SSC_TOKEN }}
+          SC_SAST_TOKEN: ${{ secrets.SC_SAST_TOKEN }}
+          SSC_APPVERSION: SDC-IWA-JAVA:github  # Optional: defaults to repo:branch
