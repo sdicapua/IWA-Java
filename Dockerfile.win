@@ -1,4 +1,4 @@
-FROM openjdk:8-nanoserver-1809
+FROM openjdk:22-nanoserver-1809
 
 LABEL maintainer="kevin.lee@microfocus.com"
 
