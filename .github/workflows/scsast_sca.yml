@@ -38,7 +38,7 @@ jobs:
 
     steps:    
       - name: Check out source code
-        uses: actions/checkout@v4  
+        uses: actions/checkout@v6  
       - name: Run ScanCentral SAST Scan
         uses: fortify/github-action/sc-sast-scan@v2
         env:
